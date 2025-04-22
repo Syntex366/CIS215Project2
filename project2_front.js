@@ -5,7 +5,7 @@ const chars = document.getElementById("char-count");
  
 textAmt.addEventListener("input", function() {
     chars.innerHTML = 120 - textAmt.value.length;
-    if (chars > 50) {
+    if (chars.innerHTML >= 50) {
         chars.style.display = "none";
     } else {
         chars.style.display = "block";
