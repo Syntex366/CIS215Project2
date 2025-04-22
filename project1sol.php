@@ -61,7 +61,8 @@ for($i=13;$i<65;$i=$i + 5){
         Please answer in 120 characters or fewer.
     </div>
     <label> What is your favorite part of PHP?     
-    <input type=text name="favorite" id="favorite" required></label>
+    <input type=text name="favorite" id="favorite" maxLength="120" required></label>
+    <p><span id="char-count" style="display: none;"></span></p>
 </div>
 
 <button type="submit" name="button-submit-form" id = "button-submit-form-id">Submit</button>
