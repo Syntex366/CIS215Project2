@@ -70,6 +70,5 @@ for($i=13;$i<65;$i=$i + 5){
 
 <div><a href='project1data.php'>View data page here</a></div>
 
-<!-- Testing if Github commits are working -->
-
+<script src="project2_front.js" defer></script>
 </body></html>
