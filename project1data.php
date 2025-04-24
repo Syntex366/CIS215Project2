@@ -193,6 +193,61 @@ function favorite_thing(){
 }
 
 /**
+ * Gathers tough data and puts it in a format to display well on the data page
+ */
+function tough_data(){
+    global $db;
+    $prep_selecttou = $db->prepare("SELECT tough FROM HomeworkSix");
+    $prep_selecttou->execute();
+    $tough_data = $prep_selecttou->fetchAll();
+    $tough_array["1, I'm Spongebob!"] = 0;
+    $tough_array["2, I flinch at the slightest movement"] = 0;
+    $tough_array["3, I'm kinda tough."] = 0;
+    $tough_array["4, I'm pretty tough, you know?"] = 0;
+    $tough_array["5, I'm in the middle."] = 0;
+    $tough_array["6, I'm up there!"] = 0;
+    $tough_array["7, Tough like Patrick. (The dude is a genius you can't tell me otherwise.)"] = 0;
+    $tough_array["8, I'm very tough!"] = 0;
+    $tough_array["9, Toughest person around!"] = 0;
+    $tough_array["10, I ate a bowl full of nails for breakfast. Without any milk!"] = 0;
+    for($i=0;$i<count($tough_data);$i++){
+        switch($tough_data[$i]["tough"]){
+            case "2":
+                $tough_array["2, I flinch at the slightest movement"]++;
+                break;
+            case "3":
+                $tough_array["3, I'm kinda tough."]++;
+                break;
+            case "4":
+                $tough_array["4, I'm pretty tough, you know?"]++;
+                break;
+            case "5":
+                $tough_array["5, I'm in the mi"]++;
+                break;
+            case "6":
+                $tough_array["6, I'm up there!"]++;
+                break;
+            case "7":
+                $tough_array["7, Tough like Patrick. (The dude is a genius you can't tell me otherwise.)"]++;
+                break;
+            case "8":
+                $tough_array["8, I'm very tough!"]++;
+                break;
+            case "9":
+                $tough_array["9, Toughest person around!"]++;
+                break;
+            case "10":
+                $tough_array["10, I ate a bowl full of nails for breakfast. Without any milk!"]++;
+                break;
+            default:
+                $tough_array["1, I'm Spongebob!"]++;
+                break;
+        }
+    }
+    return $tough_array;
+}
+
+/**
  * pretty_display makes the data display nicely for users
  * This could be improved for CSS/Bootstrap extra credit
  * As a note: I also built this backend to work with this sort of function in mind, because I dislike doing the HTML stuff. You could have had ugly names in your arrays, you just would have needed to sort it out when it came to displaying the data!
@@ -227,6 +282,11 @@ print("<div>");
 foreach(favorite_thing() as $value){
     print("<div>$value</div>");
 }
+print("</div>");
+
+print("<div>");
+print("<h2>Salty Spitoon Data:</h2>");
+pretty_display(tough_data());
 print("</div>");
 
 ?>
