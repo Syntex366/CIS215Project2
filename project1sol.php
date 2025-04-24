@@ -65,6 +65,23 @@ for($i=13;$i<65;$i=$i + 5){
     <p><span id="char-count" style="display: none;"></span></p>
 </div>
 
+<div>
+    <h3>Random question:</h3> <!--And this was made so I could have some fun and hopefully make someone smile. Can be changed later.-->
+    <p>Welcome to The Salty Spitoon. On a scale of 1-10, how tough are ya?</p>
+    <select name="tough" id="tough" size="4"> <!--This is just something silly I wanted to do.-->
+        <option value="1">1, I'm Spongebob!</option>
+        <option value="2">2, I flinch at the slightest movement</option>
+        <option value="3">3, I'm kinda tough.</option>
+        <option value="4">4, I'm pretty tough, you know?</option>
+        <option value="5">5, I'm in the middle.</option>
+        <option value="6">6, I'm up there!</option>
+        <option value="7">7, Tough like Patrick. (The dude is a genius you can't tell me otherwise.)</option>
+        <option value="8">8, I'm very tough!</option>
+        <option value="9">9, Toughest person around!</option>
+        <option value="10">10, I ate a bowl full of nails for breakfast. Without any milk!</option>
+    </select>
+</div>
+
 <button type="submit" name="button-submit-form" id = "button-submit-form-id">Submit</button>
 
 </form>
