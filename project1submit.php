@@ -28,7 +28,7 @@ function validate(){
         return "Error: Incorrect Password.";
     }
     # Next, let's make sure everything was filled in:
-    if(($_POST["email-name"] == NULL) or ($_POST["age"] == NULL) or ($_POST["gender"] == "") or ($_POST["version"] == NULL) or ($_POST["favorite"] == NULL)){
+    if(($_POST["email-name"] == NULL) or ($_POST["age"] == NULL) or ($_POST["gender"] == "") or ($_POST["version"] == NULL) or ($_POST["favorite"] == NULL) or ($_POST["tough"] == NULL)){
         return "Error: You have not filled in all questions.";
     }
     # Now, let's make sure the results make sense.
@@ -86,6 +86,11 @@ function validate(){
         return "Please keep your character count below 120 for your favorite part of PHP.";
     }
     return "";
+
+    # Silly Question
+    if(strlen($_POST["tough"]) != 2){
+        return "You are banned from The Salty Spitoon.";
+    }
 }
 
 /**
@@ -97,8 +102,9 @@ function sanitize(){
     $gender = htmlentities($_POST["gender"]);
     $version = (int)$_POST["version"];
     $favorite = htmlentities($_POST["favorite"]);
+    $tough = htmlentities($_POST["tough"]);
 
-    return array($email, $age, $gender, $version, $favorite);
+    return array($email, $age, $gender, $version, $favorite, $tough);
 }
 
 /**
@@ -106,7 +112,7 @@ function sanitize(){
  */
 function add_data(){
     global $db;
-    $prep_insert = $db->prepare("INSERT INTO project_data (email, age, gender, version, favorite) values (?,?,?,?,?)");
+    $prep_insert = $db->prepare("INSERT INTO project_data (email, age, gender, version, favorite, tough) values (?,?,?,?,?)");
     $prep_insert->execute(sanitize());
 }
 
