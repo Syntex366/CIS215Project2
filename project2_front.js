@@ -46,3 +46,22 @@ fontColorPicker.addEventListener("input", (e) => {
     currentFontColor = e.target.value;
     let currentFontColor = "#000000"; // default color, BLACK.
 });
+
+const pwTextBox = document.querySelector("#pw-id");
+pwTextBox.addEventListener('keyup', characterCounter);
+
+async function checkpw(event){
+  let pwmsg = event.target.parentNode.querySelector(".pw-msg");
+  pwmsg.innerText= "";
+
+  let userpw = event.target.value;
+  const response = await fetch('pw/checker.php?pw=${userpw}');
+  console.log("this is the response object: ", response);
+
+  let pwdoesnotwork = await response.json();
+  concolse.log("this is the Promise object: ", pwdoesnotwork);
+
+  if(pwdoesnotwork["status"] == 0){
+    pwmsg.innertext = pwdoesnotwork["message"];
+  }
+}
