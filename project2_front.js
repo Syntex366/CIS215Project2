@@ -17,6 +17,18 @@ textAmt.addEventListener("input", function() {
     }
 })
 
+function validatepswd(){
+    const password = document.querySelector('#pw-id');
+    let errormsg = ""
+    let hasUpperCase = false;
+
+    if (password.length < 8) {
+        errormsg += "Password must be more than 8 characters";
+    }
+
+}
+
+
 // Background color picker
 const bgColorPicker = document.createElement("input");
 bgColorPicker.type = "color";
