@@ -127,6 +127,8 @@ if(validate()==""){
     print("<div><a href='project1sol.php'>Try submitting again here</a></div>");
 }
 
+
+echo password_hash("password", PASSWORD_DEFAULT);
 ?>
 
 </body></html>
