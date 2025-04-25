@@ -55,7 +55,7 @@ async function checkpw(event){
   pwmsg.innerText= "";
 
   let userpw = event.target.value;
-  const response = await fetch('pw/checker.php?pw=${userpw}');
+  const response = await fetch('pw/project1submit.php?pw=${userpw}');
   console.log("this is the response object: ", response);
 
   let pwdoesnotwork = await response.json();
