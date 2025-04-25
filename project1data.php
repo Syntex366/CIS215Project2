@@ -246,7 +246,13 @@ function tough_data(){
     }
     return $tough_array;
 }
-
+/*
+Takes password hash from users and stores it in table.
+*/
+function hash_pass(){
+    $hash = $db->prepare("INSERT INTO project_data (hash) VALUES (?)");
+    $hash->execute();
+}
 /**
  * pretty_display makes the data display nicely for users
  * This could be improved for CSS/Bootstrap extra credit
