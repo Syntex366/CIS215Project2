@@ -17,6 +17,31 @@ textAmt.addEventListener("input", function() {
     }
 })
 
+/* Password AJAX Function */
+
+const passwd = document.querySelector("#pw-id");
+passwd.addEventListener('input', evalPass);
+
+async function evalPass(event) {
+    let userPass = event.target.value;
+
+    const response = await fetch(`project1submit.php?passcde=${userPass}`);
+
+    if (!response.ok) {
+        console.error('Network response was not ok');
+        return;
+    }
+
+    let result = await response.json();
+
+    const feedback = document.querySelector("#feedback");
+    if (feedback) {
+        feedback.textContent = result["msg"];
+    }
+}
+
+
+
 function validatepswd(){
     const password = document.querySelector('#pw-id');
     let errormsg = ""

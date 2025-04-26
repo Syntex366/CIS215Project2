@@ -15,7 +15,7 @@
 <input type="email" name="email-name" id="email-id" required>
 
 <label>Enter your password: </label>
-<input type="password" name="pw-name" id="pw-id" required>
+<input type="password" name="pw-name" id="pw-id" required><span id="feedback"></span>
 
 </fieldset>
 
