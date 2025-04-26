@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>PHP Questions: Submit</title>
-    </head>
-<body>
+
 
 <?php
 /**
@@ -11,6 +6,27 @@
  * 
  * CREATE TABLE project_data (id INT PRIMARY KEY AUTO_INCREMENT, email VARCHAR(320), age INT, gender CHAR(2), version INT, favorite VARCHAR(120));
  */
+
+
+
+/* Password AJAX PHP - working with a mock array of passwords for testing for now, will expand later */
+
+if (isset($_GET["passcde"])) {
+    $valid = ["hunter2", "123456", "admin"];
+
+    $pass = trim($_GET["passcde"]);
+
+    if (in_array($pass, $valid, true)) {
+        $msg = "Password is valid";
+    } else {
+        $msg = "Password not recognized";
+    }
+
+    echo json_encode(["msg" => $msg]);
+    exit;
+}
+
+
 
 # Retrieved the hashed password as discussed in classes.
 # Password: CIS215php!
@@ -131,5 +147,11 @@ if(validate()==""){
 
 
 ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PHP Questions: Submit</title>
+    </head>
+<body>
 
 </body></html>
