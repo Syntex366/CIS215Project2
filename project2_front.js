@@ -1,7 +1,7 @@
 /* Character Count Function */
 
-const textAmt = document.getElementById("favorite"); /* grabs the text inside the favorite textbox */
-const chars = document.getElementById("char-count"); /* grabs the span element for displaying the char count */
+const textAmt = document.querySelector("#favorite"); /* grabs the text inside the favorite textbox */
+const chars = document.querySelector("#char-count"); /* grabs the span element for displaying the char count */
  
 textAmt.addEventListener("input", function() { /* checks if the user has less than 50 characters and starts displaying the count as they type. Turns red when less than 10 characters remain. */
     chars.innerHTML = 120 - textAmt.value.length; /* the chars-remaining calculation */
