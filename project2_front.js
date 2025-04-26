@@ -1,18 +1,18 @@
 /* Character Count Function */
 
-const textAmt = document.getElementById("favorite");
-const chars = document.getElementById("char-count");
+const textAmt = document.getElementById("favorite"); /* grabs the text inside the favorite textbox */
+const chars = document.getElementById("char-count"); /* grabs the span element for displaying the char count */
  
-textAmt.addEventListener("input", function() {
-    chars.innerHTML = 120 - textAmt.value.length;
-    if (chars.innerHTML >= 50) {
+textAmt.addEventListener("input", function() { /* checks if the user has less than 50 characters and starts displaying the count as they type. Turns red when less than 10 characters remain. */
+    chars.innerHTML = 120 - textAmt.value.length; /* the chars-remaining calculation */
+    if (chars.innerHTML >= 50) { /* activates the display of the count when below 50 */
         chars.style.display = "none";
     } else {
         chars.style.display = "block";
-        if (chars.innerHTML <= 10) {
+        if (chars.innerHTML <= 10) { /* sets text to red below 10 characters */
             chars.parentElement.style.color = 'red';
         } else {
-            chars.parentElement.style.color = 'black';
+            chars.parentElement.style.color = 'black'; /* makes sure the text goes back to black if the user erases above 10 characters */
         }
     }
 })
