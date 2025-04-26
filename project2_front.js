@@ -40,6 +40,93 @@ async function evalPass(event) {
     }
 }
 
+/* Highlight Empty Questions Function - adds a red border to a question that has no answer. Border only goes away if the question is given some form of answer, not if you simply interact and fill nothing in */
+
+emailHlight = document.querySelector("#email-id");
+passHlight = document.querySelector("#pw-id");
+ageHlight = document.querySelector("#age-radios");
+genderHlight = document.querySelector("#gender");
+versionHlight = document.querySelector("#version");
+favoriteHlight = document.querySelector("#favorite");
+toughHlight = document.querySelector("#tough");
+
+highlighter = document.querySelector("#button-submit-form-id");
+highlighter.addEventListener('click', highlight);
+
+async function highlight() {
+
+    if (emailHlight.value.trim() === "") {
+        emailHlight.style.border = "2px solid red";
+    }
+
+    if (passHlight.value.trim() === "") {
+        passHlight.style.border = "2px solid red";
+    }
+
+    const radios = ageHlight.querySelectorAll('input[type="radio"][name="age"]');
+    let oneChecked = false;
+
+    radios.forEach(radio => {
+        if (radio.checked) {
+            oneChecked = true;
+        }
+    });
+
+    if (!oneChecked) {
+        ageHlight.style.border = "2px solid red";
+        ageHlight.style.padding = "10px";
+    }
+
+    if (genderHlight.value === "") {
+        genderHlight.style.border = "2px solid red";
+    }
+
+    if (versionHlight.value === "") {
+        versionHlight.style.border = "2px solid red";
+    }
+
+    if (favoriteHlight.value.trim() === "") {
+        favoriteHlight.style.border = "2px solid red";
+    }
+
+    if (toughHlight.value === "") {
+        toughHlight.style.border = "2px solid red";
+    }
+}
+
+/* Event Listeners that remove the border when a user interacts with the question */
+
+emailHlight.addEventListener('input', function() {
+    emailHlight.style.border = "";
+});
+
+passHlight.addEventListener('input', function() {
+    passHlight.style.border = "";
+});
+
+const radios = ageHlight.querySelectorAll('input[type="radio"][name="age"]');
+
+radios.forEach(radio => {
+    radio.addEventListener('change', function() {
+        ageHlight.style.border = "";
+    });
+});
+
+genderHlight.addEventListener('input', function() {
+    genderHlight.style.border = "";
+});
+
+versionHlight.addEventListener('input', function() {
+    versionHlight.style.border = "";
+});
+
+favoriteHlight.addEventListener('input', function() {
+    favoriteHlight.style.border = "";
+});
+
+toughHlight.addEventListener('input', function() {
+    toughHlight.style.border = "";
+});
 
 
 function validatepswd(){

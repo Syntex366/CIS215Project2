@@ -28,7 +28,7 @@
 
 </fieldset>
 
-<div>
+<div id="age-radios">
 <label>What age are you? </label>
 <div>
 <label> <input type="radio" name="age" id="age-0" value="0" required>
@@ -49,7 +49,7 @@ for($i=13;$i<65;$i=$i + 5){
 </div>
 </div>
 
-<div>
+<div id="gender-id">
 <select name="gender" id="gender">
     <option value="">--Please select your gender--</option>
     <option value="ma">Male</option>
