@@ -19,29 +19,29 @@ textAmt.addEventListener("input", function() {
 
 /* Password AJAX Function */
 
-const loginButton = document.querySelector("#login-id");
-const passwd = document.querySelector("#pw-id");
-const hideForm = document.querySelector("#form-hider");
+const loginButton = document.querySelector("#login-id"); /* grabs the login button */
+const passwd = document.querySelector("#pw-id"); /* grabs the password field */
+const hideForm = document.querySelector("#form-hider"); /* grabs the div surrounding the reest of the form */
 
-loginButton.addEventListener('click', evalPass);
+loginButton.addEventListener('click', evalPass); /* login button activates the AJAX command */
 
-async function evalPass(event) {
-    let userPass = passwd.value;
+async function evalPass(event) { /* checks if the entered password matches the hashed password */
+    let userPass = passwd.value; /* gets the value of the password field entry */
 
-    const response = await fetch(`passcheck.php?passcde=${userPass}`);
+    const response = await fetch(`passcheck.php?passcde=${userPass}`); /* fetch to passcheck.php - promise */
 
-    if (!response.ok) {
+    if (!response.ok) { /* response check */
         console.error('Network response was not ok');
         return;
     }
 
-    let result = await response.json();
+    let result = await response.json(); /*  response return from passcheck.php */
 
-    if (result.msg === "Password is valid") {
-        hideForm.style.display = "block";
-        loginButton.style.display = "none";
+    if (result.msg === "Password is valid") { /* checks if the result value indicates a correct password */
+        hideForm.style.display = "block"; /* reveals the hidden portion of the form */
+        loginButton.style.display = "none"; /* hides the login button since it is no longer needed */
     } else {
-        alert("Invalid password, please try again.");
+        alert("Invalid password, please try again."); /* error alert for wrong password */
     }
 }
 
