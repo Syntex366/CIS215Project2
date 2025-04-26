@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PHP Questions: Submit</title>
+    </head>
+<body>
+<div id="bgColorGoWee">
+    <label for="bgColorPicker">Choose Background Color:</label>
+    <input type="color" id="bgColorPicker" value="#ffffff">
+</div>
+<div id="fontColorGoWee">
+    <label for="fontColorPicker">Choose Font Color:</label>
+    <input type="color" id="fontColorPicker" value="#ffffff">
+</div>
 <?php
 /**
  * Note: I created my SQL table in PuTTY using the following command:
@@ -5,24 +19,6 @@
  * CREATE TABLE project_data (id INT PRIMARY KEY AUTO_INCREMENT, email VARCHAR(320), age INT, gender CHAR(2), version INT, favorite VARCHAR(120));
  */
 
-
-
-/* Password AJAX PHP - working with a mock array of passwords for testing for now, will expand later */
-
-if (isset($_GET["passcde"])) {
-    $valid = ["hunter2", "123456", "admin"];
-
-    $pass = trim($_GET["passcde"]);
-
-    if (in_array($pass, $valid, true)) {
-        $msg = "Password is valid";
-    } else {
-        $msg = "Password not recognized";
-    }
-
-    echo json_encode(["msg" => $msg]);
-    exit;
-}
 
 
 
@@ -145,18 +141,4 @@ if(validate()==""){
 
 
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>PHP Questions: Submit</title>
-    </head>
-<body>
-<div id="bgColorGoWee">
-    <label for="bgColorPicker">Choose Background Color:</label>
-    <input type="color" id="bgColorPicker" value="#ffffff">
-</div>
-<div id="fontColorGoWee">
-    <label for="fontColorPicker">Choose Font Color:</label>
-    <input type="color" id="fontColorPicker" value="#ffffff">
-</div>
 </body></html>
