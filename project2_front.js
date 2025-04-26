@@ -47,6 +47,8 @@ async function evalPass(event) { /* checks if the entered password matches the h
 
 /* Highlight Empty Questions Function - adds a red border to a question that has no answer. Border only goes away if the question is given some form of answer, not if you simply interact and fill nothing in */
 
+/* bunch of querySelectors for all the questions - mostly grabs the input box, sometimes grabs a div for questions with multiple inputs */
+
 emailHlight = document.querySelector("#email-id");
 passHlight = document.querySelector("#pw-id");
 ageHlight = document.querySelector("#age-radios");
@@ -55,12 +57,12 @@ versionHlight = document.querySelector("#version");
 favoriteHlight = document.querySelector("#favorite");
 toughHlight = document.querySelector("#tough");
 
-highlighter = document.querySelector("#button-submit-form-id");
+highlighter = document.querySelector("#button-submit-form-id"); /* calls the highlight function when the submit button is pressed */
 highlighter.addEventListener('click', highlight);
 
-async function highlight() {
+async function highlight() { /* checks all the questions and sets a red border around any without an answer */
 
-    if (emailHlight.value.trim() === "") {
+    if (emailHlight.value.trim() === "") { /* checks if the input box is empty, and sets the border if it is. Same code for every question except age */
         emailHlight.style.border = "2px solid red";
     }
 
@@ -68,16 +70,15 @@ async function highlight() {
         passHlight.style.border = "2px solid red";
     }
 
-    const radios = ageHlight.querySelectorAll('input[type="radio"][name="age"]');
-    let oneChecked = false;
+    const radios = ageHlight.querySelectorAll('input[type="radio"][name="age"]'); /* Selects all the radio buttons for the foreach */
+    let oneChecked = false; /* helper variable */
 
-    radios.forEach(radio => {
+    radios.forEach(radio => { /* uses a foreach to go through all the radiobuttons and make sure none are checked. If anything is checked, the helper variable is changed to bypass the border set */
         if (radio.checked) {
             oneChecked = true;
         }
     });
-
-    if (!oneChecked) {
+    if (!oneChecked) { /* similar to the code for other questions, just using the helper variable for the check */
         ageHlight.style.border = "2px solid red";
         ageHlight.style.padding = "10px";
     }
@@ -101,7 +102,7 @@ async function highlight() {
 
 /* Event Listeners that remove the border when a user interacts with the question */
 
-emailHlight.addEventListener('input', function() {
+emailHlight.addEventListener('input', function() { /* detects if the user submitted something into the field. Does not remove the border if they simply interact and enter nothing. Same code for all questions, age slightly differs */
     emailHlight.style.border = "";
 });
 
@@ -109,7 +110,7 @@ passHlight.addEventListener('input', function() {
     passHlight.style.border = "";
 });
 
-const radios = ageHlight.querySelectorAll('input[type="radio"][name="age"]');
+const radios = ageHlight.querySelectorAll('input[type="radio"][name="age"]'); /* detects any radio button selection with a foreach to remove the border instead of detecting input like the others */
 
 radios.forEach(radio => {
     radio.addEventListener('change', function() {
@@ -132,6 +133,7 @@ favoriteHlight.addEventListener('input', function() {
 toughHlight.addEventListener('input', function() {
     toughHlight.style.border = "";
 });
+
 
 
 function validatepswd(){
