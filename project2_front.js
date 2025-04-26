@@ -19,13 +19,16 @@ textAmt.addEventListener("input", function() {
 
 /* Password AJAX Function */
 
+const loginButton = document.querySelector("#login-id");
 const passwd = document.querySelector("#pw-id");
-passwd.addEventListener('input', evalPass);
+const hideForm = document.querySelector("#form-hider");
+
+loginButton.addEventListener('click', evalPass);
 
 async function evalPass(event) {
-    let userPass = event.target.value;
+    let userPass = passwd.value;
 
-    const response = await fetch(`project1submit.php?passcde=${userPass}`);
+    const response = await fetch(`passcheck.php?passcde=${userPass}`);
 
     if (!response.ok) {
         console.error('Network response was not ok');
@@ -34,9 +37,11 @@ async function evalPass(event) {
 
     let result = await response.json();
 
-    const feedback = document.querySelector("#feedback");
-    if (feedback) {
-        feedback.textContent = result["msg"];
+    if (result.msg === "Password is valid") {
+        hideForm.style.display = "block";
+        loginButton.style.display = "none";
+    } else {
+        alert("Invalid password, please try again.");
     }
 }
 

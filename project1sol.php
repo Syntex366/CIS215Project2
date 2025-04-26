@@ -26,7 +26,11 @@
 <label>Enter your password: </label>
 <input type="password" name="pw-name" id="pw-id" required><span id="feedback"></span>
 
+<button type="button" name="login" id="login-id">Login</button>
+
 </fieldset>
+
+<div id="form-hider" style="display: none;"> <!-- div that hides the form until the correct password is entered -->
 
 <div id="age-radios">
 <label>What age are you? </label>
@@ -92,6 +96,8 @@ for($i=13;$i<65;$i=$i + 5){
 </div>
 
 <button type="submit" name="button-submit-form" id = "button-submit-form-id">Submit</button>
+
+</div> <!-- End of form hider -->
 
 </form>
 
