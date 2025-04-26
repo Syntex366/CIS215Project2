@@ -8,6 +8,15 @@
 <!-- Big takeaways: required keyword, make sure value is in there, feel free to use other attributes! -->
 
 <form action="project1submit.php" method="post" class="survey">
+    
+<div id="bgColorGoWee">
+    <label for="bgColorPicker">Choose Background Color:</label>
+    <input type="color" id="bgColorPicker" value="#ffffff">
+</div>
+<div id="fontColorGoWee">
+    <label for="fontColorPicker">Choose Font Color:</label>
+    <input type="color" id="fontColorPicker" value="#ffffff">
+</div>
 
 <fieldset>
 
