@@ -4,14 +4,18 @@
         <title>PHP Questions: Data</title>
     </head>
 <body>
+    <div>
+        <label for="searchData"><strong>Search:</strong></label>
+        <input type="search" id="searchData" name="sd" placeholder="Search the data page...">
+    </div>
     <div id="bgColorGoWee">
         <label for="bgColorPicker">Choose Background Color:</label>
-            <input type="color" id="bgColorPicker" value="#ffffff">
-        </div>
-        <div id="fontColorGoWee">
-            <label for="fontColorPicker">Choose Font Color:</label>
-            <input type="color" id="fontColorPicker" value="#ffffff">
-        </div>
+        <input type="color" id="bgColorPicker" value="#ffffff">
+    </div>
+    <div id="fontColorGoWee">
+        <label for="fontColorPicker">Choose Font Color:</label>
+        <input type="color" id="fontColorPicker" value="#ffffff">
+    </div>
 <?php
 
 require ('dbconfig.php');
