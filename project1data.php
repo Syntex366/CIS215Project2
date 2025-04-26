@@ -2,9 +2,32 @@
 <html>
     <head>
         <title>PHP Questions: Data</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const picker = document.getElementById("bgColorPicker");
+                picker.addEventListener("input", (e) => {
+                    document.body.style.backgroundColor = e.target.value;
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const picker = document.getElementById("fontColorPicker");
+                picker.addEventListener("input", (e) => {
+                    document.body.style.color = e.target.value;
+                });
+            });
+        </script>
     </head>
 <body>
-
+    <div id="bgColorGoWee">
+            <label for="bgColorPicker">Choose Background Color:</label>
+            <input type="color" id="bgColorPicker" value="#ffffff">
+        </div>
+        <div id="fontColorGoWee">
+            <label for="fontColorPicker">Choose Font Color:</label>
+            <input type="color" id="fontColorPicker" value="#ffffff">
+        </div>
 
 <?php
 
