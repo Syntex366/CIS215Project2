@@ -65,6 +65,10 @@ for($i=13;$i<65;$i=$i + 5){
 </select>
 </div>
 
+<div id="other-text"  style="display: none;"> <!-- Other textbox, hidden by default -->
+    <textarea maxLength="30"></textarea>
+    </div>
+
 <div>
     <label> What version of PHP do you use? (only include the main version number) <input type="number" name="version" id="version" min="1", max="9" required> </label>
 </div>

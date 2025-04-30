@@ -134,6 +134,23 @@ toughHlight.addEventListener('input', function() {
     toughHlight.style.border = "";
 });
 
+/* Other Textbox Function - Displays a textbox to enter a custom gender option when the "choose not to say/other" selection is made */
+
+const genderSelect = document.querySelector("#gender");
+const otherText = document.querySelector("#other-text");
+
+genderSelect.addEventListener('change', otherOptionPick);
+
+async function otherOptionPick(event) {
+    let select = event.target.value;
+
+    if (select === "ot") {
+        otherText.style.display = "block";
+      } else {
+        otherText.style.display = "none";
+      }  
+}
+
 
 
 function validatepswd(){
