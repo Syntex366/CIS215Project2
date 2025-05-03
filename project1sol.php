@@ -22,9 +22,11 @@
 
 <label>Enter your email: </label>
 <input type="email" name="email-name" id="email-id" required>
+<span class="error" id="erroremail"></span>
 
 <label>Enter your password: </label>
 <input type="password" name="pw-name" id="pw-id" required><span id="feedback"></span>
+<span class="error" id="passerror"></span>
 
 <button type="button" name="login" id="login-id">Login</button>
 
@@ -37,6 +39,7 @@
 <div>
 <label> <input type="radio" name="age" id="age-0" value="0" required>
 0-12 </label>
+<span class="error" id="ageerror"></span>
 </div>
 <?php
 
