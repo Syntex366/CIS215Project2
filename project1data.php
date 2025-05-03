@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>PHP Questions: Data</title>
+        <script src="project2_front.js" defer></script>
         <link rel="stylesheet" type="text/css" href="Style/style.css">
     </head>
 <body>
@@ -50,6 +51,14 @@
                         }
                     ?>
     </table>
+
+    <div>
+<label for="delete-data">If you would like to delete your data from the table, please enter your email in the box and click the Delete My Data button.</label>
+
+<input type="email" name="email-dlt" id="email-delete" required>
+<button type="button" name="delete-btn" id="delete-data">Delete My Data</Button>
+</div>
+
 <?php
 
 
@@ -339,8 +348,5 @@ pretty_display(tough_data());
 print("</div>");
 
 ?>
-
-<button type="button" name="delete-btn" id="delete-data">Delete My Data</Button>
-    <input type="email" name="email-dlt" id="email-delete" required>
 
 </body></html>

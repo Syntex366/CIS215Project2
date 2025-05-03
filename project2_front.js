@@ -3,19 +3,21 @@
 const textAmt = document.querySelector("#favorite"); /* grabs the text inside the favorite textbox */
 const chars = document.querySelector("#char-count"); /* grabs the span element for displaying the char count */
  
+if (textAmt && chars) {
 textAmt.addEventListener("input", function() { /* checks if the user has less than 50 characters and starts displaying the count as they type. Turns red when less than 10 characters remain. */
     chars.innerHTML = 120 - textAmt.value.length; /* the chars-remaining calculation */
-    if (chars.innerHTML >= 50) { /* activates the display of the count when below 50 */
-        chars.style.display = "none";
-    } else {
-        chars.style.display = "block";
-        if (chars.innerHTML <= 10) { /* sets text to red below 10 characters */
-            chars.parentElement.style.color = 'red';
+        if (chars.innerHTML >= 50) { /* activates the display of the count when below 50 */
+            chars.style.display = "none";
         } else {
-            chars.parentElement.style.color = 'black'; /* makes sure the text goes back to black if the user erases above 10 characters */
+            chars.style.display = "block";
+            if (chars.innerHTML <= 10) { /* sets text to red below 10 characters */
+                chars.parentElement.style.color = 'red';
+            } else {
+                chars.parentElement.style.color = 'black'; /* makes sure the text goes back to black if the user erases above 10 characters */
+            }
         }
-    }
-})
+    })
+}
 
 /* Password AJAX Function */
 
@@ -23,46 +25,28 @@ const loginButton = document.querySelector("#login-id"); /* grabs the login butt
 const passwd = document.querySelector("#pw-id"); /* grabs the password field */
 const hideForm = document.querySelector("#form-hider"); /* grabs the div surrounding the reest of the form */
 
+if (loginButton) {
 loginButton.addEventListener('click', evalPass); /* login button activates the AJAX command */
 
-async function evalPass(event) { /* checks if the entered password matches the hashed password */
-    let userPass = passwd.value; /* gets the value of the password field entry */
+    async function evalPass(event) { /* checks if the entered password matches the hashed password */
+        let userPass = passwd.value; /* gets the value of the password field entry */
 
-    const response = await fetch(`passcheck.php?passcde=${userPass}`); /* fetch to passcheck.php - promise */
+        const response = await fetch(`passcheck.php?passcde=${userPass}`); /* fetch to passcheck.php - promise */
 
-    if (!response.ok) { /* response check */
-        console.error('Network response was not ok');
-        return;
+        if (!response.ok) { /* response check */
+            console.error('Network response was not ok');
+            return;
+        }
+
+        let result = await response.json(); /*  response return from passcheck.php */
+
+        if (result.msg === "Password is valid") { /* checks if the result value indicates a correct password */
+            hideForm.style.display = "block"; /* reveals the hidden portion of the form */
+            loginButton.style.display = "none"; /* hides the login button since it is no longer needed */
+        } else {
+            alert("Invalid password, please try again."); /* error alert for wrong password */
+        }
     }
-
-    let result = await response.json(); /*  response return from passcheck.php */
-
-    if (result.msg === "Password is valid") { /* checks if the result value indicates a correct password */
-        hideForm.style.display = "block"; /* reveals the hidden portion of the form */
-        loginButton.style.display = "none"; /* hides the login button since it is no longer needed */
-    } else {
-        alert("Invalid password, please try again."); /* error alert for wrong password */
-    }
-}
-
-/* Delete Data AJAX Function */
-
-const deleteButton = document.querySelector("#delete-data");
-const email = document.querySelector("#email-delete");
-
-deleteButton.addEventListener('click', deleteData);
-
-async function deleteData(event) {
-    let emailToDelete = email.value;
-
-    const response = await fetch('');
-
-    if (!response.ok) { /* response check */
-        console.error('Network response was not ok');
-        return;
-    }
-
-    let result = await response.json();
 }
 
 
@@ -80,97 +64,135 @@ favoriteHlight = document.querySelector("#favorite");
 toughHlight = document.querySelector("#tough");
 
 highlighter = document.querySelector("#button-submit-form-id"); /* calls the highlight function when the submit button is pressed */
-highlighter.addEventListener('click', highlight);
 
-async function highlight() { /* checks all the questions and sets a red border around any without an answer */
+if (highlighter) {
+    highlighter.addEventListener('click', highlight);
 
-    if (emailHlight.value.trim() === "") { /* checks if the input box is empty, and sets the border if it is. Same code for every question except age */
-        emailHlight.style.border = "2px solid red";
-    }
+    async function highlight() { /* checks all the questions and sets a red border around any without an answer */
 
-    if (passHlight.value.trim() === "") {
-        passHlight.style.border = "2px solid red";
-    }
-
-    const radios = ageHlight.querySelectorAll('input[type="radio"][name="age"]'); /* Selects all the radio buttons for the foreach */
-    let oneChecked = false; /* helper variable */
-
-    radios.forEach(radio => { /* uses a foreach to go through all the radiobuttons and make sure none are checked. If anything is checked, the helper variable is changed to bypass the border set */
-        if (radio.checked) {
-            oneChecked = true;
+        if (emailHlight.value.trim() === "") { /* checks if the input box is empty, and sets the border if it is. Same code for every question except age */
+            emailHlight.style.border = "2px solid red";
         }
-    });
-    if (!oneChecked) { /* similar to the code for other questions, just using the helper variable for the check */
-        ageHlight.style.border = "2px solid red";
-        ageHlight.style.padding = "10px";
-    }
 
-    if (genderHlight.value === "") {
-        genderHlight.style.border = "2px solid red";
-    }
+        if (passHlight.value.trim() === "") {
+            passHlight.style.border = "2px solid red";
+        }
 
-    if (versionHlight.value === "") {
-        versionHlight.style.border = "2px solid red";
-    }
+        const radios = ageHlight.querySelectorAll('input[type="radio"][name="age"]'); /* Selects all the radio buttons for the foreach */
+        let oneChecked = false; /* helper variable */
 
-    if (favoriteHlight.value.trim() === "") {
-        favoriteHlight.style.border = "2px solid red";
-    }
+        radios.forEach(radio => { /* uses a foreach to go through all the radiobuttons and make sure none are checked. If anything is checked, the helper variable is changed to bypass the border set */
+            if (radio.checked) {
+                oneChecked = true;
+            }
+        });
+        if (!oneChecked) { /* similar to the code for other questions, just using the helper variable for the check */
+            ageHlight.style.border = "2px solid red";
+            ageHlight.style.padding = "10px";
+        }
 
-    if (toughHlight.value === "") {
-        toughHlight.style.border = "2px solid red";
+        if (genderHlight.value === "") {
+            genderHlight.style.border = "2px solid red";
+        }
+
+        if (versionHlight.value === "") {
+            versionHlight.style.border = "2px solid red";
+        }
+
+        if (favoriteHlight.value.trim() === "") {
+            favoriteHlight.style.border = "2px solid red";
+        }
+
+        if (toughHlight.value === "") {
+            toughHlight.style.border = "2px solid red";
+        }
     }
-}
 
 /* Event Listeners that remove the border when a user interacts with the question */
 
-emailHlight.addEventListener('input', function() { /* detects if the user submitted something into the field. Does not remove the border if they simply interact and enter nothing. Same code for all questions, age slightly differs */
-    emailHlight.style.border = "";
-});
-
-passHlight.addEventListener('input', function() {
-    passHlight.style.border = "";
-});
-
-const radios = ageHlight.querySelectorAll('input[type="radio"][name="age"]'); /* detects any radio button selection with a foreach to remove the border instead of detecting input like the others */
-
-radios.forEach(radio => {
-    radio.addEventListener('change', function() {
-        ageHlight.style.border = "";
+    emailHlight.addEventListener('input', function() { /* detects if the user submitted something into the field. Does not remove the border if they simply interact and enter nothing. Same code for all questions, age slightly differs */
+        emailHlight.style.border = "";
     });
-});
 
-genderHlight.addEventListener('input', function() {
-    genderHlight.style.border = "";
-});
+    passHlight.addEventListener('input', function() {
+        passHlight.style.border = "";
+    });
 
-versionHlight.addEventListener('input', function() {
-    versionHlight.style.border = "";
-});
+    const radios = ageHlight.querySelectorAll('input[type="radio"][name="age"]'); /* detects any radio button selection with a foreach to remove the border instead of detecting input like the others */
 
-favoriteHlight.addEventListener('input', function() {
-    favoriteHlight.style.border = "";
-});
+    radios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            ageHlight.style.border = "";
+        });
+    });
 
-toughHlight.addEventListener('input', function() {
-    toughHlight.style.border = "";
-});
+    genderHlight.addEventListener('input', function() {
+        genderHlight.style.border = "";
+    });
+
+    versionHlight.addEventListener('input', function() {
+        versionHlight.style.border = "";
+    });
+
+    favoriteHlight.addEventListener('input', function() {
+        favoriteHlight.style.border = "";
+    });
+
+    toughHlight.addEventListener('input', function() {
+        toughHlight.style.border = "";
+    });
+}
+
+
 
 /* Other Textbox Function - Displays a textbox to enter a custom gender option when the "choose not to say/other" selection is made */
 
 const genderSelect = document.querySelector("#gender");
 const otherText = document.querySelector("#other-text");
 
+if (genderSelect) {
 genderSelect.addEventListener('change', otherOptionPick);
 
-async function otherOptionPick(event) {
-    let select = event.target.value;
+    async function otherOptionPick(event) {
+        let select = event.target.value;
 
-    if (select === "ot") {
-        otherText.style.display = "block";
-      } else {
-        otherText.style.display = "none";
-      }  
+        if (select === "ot") {
+            otherText.style.display = "block";
+        } else {
+            otherText.style.display = "none";
+        }  
+    }
+}
+
+
+
+/* Delete Data AJAX Function */
+
+const deleteButton = document.querySelector("#delete-data");
+const email = document.querySelector("#email-delete");
+
+if (deleteButton) {
+deleteButton.addEventListener('click', deleteData);
+
+async function deleteData(event) {
+    let emailToDelete = email.value;
+    
+        if (!(emailToDelete === "")) {
+
+            const response = await fetch(`deletedata.php?email=${emailToDelete}`);
+            console.log(response);
+
+            if (!response.ok) {
+                console.error("network response was not ok");
+                return;
+            }
+
+            let result = await response.json();
+            console.log(result);
+
+            alert(result.msg);
+        }
+    }
 }
 
 
@@ -204,22 +226,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const pwTextBox = document.querySelector("#pw-id");
+
+if (pwTextBox) {
 pwTextBox.addEventListener('keyup', characterCounter);
 
-async function checkpw(event){
-  let pwmsg = event.target.parentNode.querySelector(".pw-msg");
-  pwmsg.innerText= "";
+    async function checkpw(event){
+        let pwmsg = event.target.parentNode.querySelector(".pw-msg");
+        pwmsg.innerText= "";
 
-  let userpw = event.target.value;
-  const response = await fetch('pw/project1submit.php?pw=${userpw}');
-  console.log("this is the response object: ", response);
+        let userpw = event.target.value;
+        const response = await fetch('pw/project1submit.php?pw=${userpw}');
+        console.log("this is the response object: ", response);
 
-  let pwdoesnotwork = await response.json();
-  concolse.log("this is the Promise object: ", pwdoesnotwork);
+        let pwdoesnotwork = await response.json();
+        console.log("this is the Promise object: ", pwdoesnotwork);
 
-  if(pwdoesnotwork["status"] == 0){
-    pwmsg.innertext = pwdoesnotwork["message"];
-  }
+        if(pwdoesnotwork["status"] == 0){
+            pwmsg.innertext = pwdoesnotwork["message"];
+        }
+    }
 }
-
 
