@@ -21,12 +21,12 @@
 <fieldset>
 
 <label>Enter your email: </label>
-<input type="email" name="email-name" id="email-id" required>
+<input aria-describedby="emailrules" type="email" name="email-name" id="email-id" required>
 <span class="error" id="erroremail"></span>
 <div role="tooltip" id="emailrules">
 
 <label>Enter your password: </label>
-<input type="password" name="pw-name" id="pw-id" required><span id="feedback"></span>
+<input aria-describedby="passwordrules" type="password" name="pw-name" id="pw-id" required><span id="feedback"></span>
 <span class="error" id="passerror"></span>
 <div role="tooltip" id="passwordrules">
 
