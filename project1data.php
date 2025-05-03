@@ -98,7 +98,7 @@ function age_distribution(){
     }
 
     # average age was NOT required, but here's a rough estimate
-    $count = 0;
+    $count = 1;
     $sum = 0;
     $othersCount = 0;
     # we'll only count the small ranges since that's easier to make assumptions about.
