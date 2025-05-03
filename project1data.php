@@ -324,4 +324,7 @@ print("</div>");
 
 ?>
 
+<button type="button" name="delete-btn" id="delete-data">Delete My Data</Button>
+    <input type="email" name="email-dlt" id="email-delete" required>
+
 </body></html>

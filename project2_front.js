@@ -45,6 +45,28 @@ async function evalPass(event) { /* checks if the entered password matches the h
     }
 }
 
+/* Delete Data AJAX Function */
+
+const deleteButton = document.querySelector("#delete-data");
+const email = document.querySelector("#email-delete");
+
+deleteButton.addEventListener('click', deleteData);
+
+async function deleteData(event) {
+    let emailToDelete = email.value;
+
+    const response = await fetch('');
+
+    if (!response.ok) { /* response check */
+        console.error('Network response was not ok');
+        return;
+    }
+
+    let result = await response.json();
+}
+
+
+
 /* Highlight Empty Questions Function - adds a red border to a question that has no answer. Border only goes away if the question is given some form of answer, not if you simply interact and fill nothing in */
 
 /* bunch of querySelectors for all the questions - mostly grabs the input box, sometimes grabs a div for questions with multiple inputs */
