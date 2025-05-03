@@ -59,11 +59,11 @@ for($i=13;$i<65;$i=$i + 5){
 <div id="gender-id">
 <select name="gender" id="gender">
     <option value="">--Please select your gender--</option>
-    <option value="ma">Male</option>
-    <option value="fe">Female</option>
-    <option value="nb">Nonbinary</option>
-    <option value="gf">Genderfluid</option>
-    <option value="ag">Agender</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Nonbinary">Nonbinary</option>
+    <option value="Genderfluid">Genderfluid</option>
+    <option value="Agender">Agender</option>
     <option value="ot">Choose not to say/Other</option>
 </select>
 </div>

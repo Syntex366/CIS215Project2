@@ -21,7 +21,7 @@ if (!(array_diff($emailCheck, $emailArray))) { /* check if the user entry is par
     $delete = $db->prepare("DELETE FROM project_data WHERE email = ?"); /* delete the data of the user email if it is found in the fetched string */
     $delete->execute([$email]);
 
-    $msg = "Data deleted successfully";
+    $msg = "Data deleted successfully. Reload the page to reset the data display"; /* There's a table displaying database data that I'm not too sure how to connect to the AJAX function so that's why the second part */
 } else {
     $msg = "Email was not found in database";
 }
