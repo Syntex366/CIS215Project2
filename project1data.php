@@ -18,7 +18,18 @@
         <input type="color" id="fontColorPicker" value="#ffffff">
     </div>
 
-    <table>
+    <?php
+        require ('dbconfig.php');
+        $db = connectDB();
+
+        $display = $db->prepare("SELECT * FROM project_data"); /* prepares all data from the database table to be displayed in an HTML table */
+        $display->execute();
+        $data = $display->fetchAll(PDO::FETCH_ASSOC); /* fetches the prepared data */
+
+
+    ?>
+
+    <table> <!-- Table to display all individual data entries anonymously -->
         <caption>Survey Data</caption>
         <tr>
             <th>Age</th>
@@ -27,15 +38,20 @@
             <th>Favorite Part of PHP</th>
             <th>How Tough Are Ya?</th>
         </tr>
-
-        <tr>
-
-        </tr>
+        <?php
+                        foreach ($data as $row) { /* displays the data previously fetched to the frontend */
+                            print("<tr>");
+                            print("<td>{$row['age']}</td>");
+                            print("<td>{$row['gender']}</td>");
+                            print("<td>{$row['version']}</td>");
+                            print("<td>{$row['favorite']}</td>");
+                            print("<td>{$row['salty']}</td>");
+                            print("</tr>");
+                        }
+                    ?>
     </table>
 <?php
 
-require ('dbconfig.php');
-$db = connectDB();
 
 /**
  * Gathers age data and puts it in a format to display well on the data page

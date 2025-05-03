@@ -16,7 +16,7 @@
 /**
  * Note: I created my SQL table in PuTTY using the following command:
  * 
- * CREATE TABLE project_data (id INT PRIMARY KEY AUTO_INCREMENT, email VARCHAR(320), age INT, gender CHAR(2), version INT, favorite VARCHAR(120));
+ * CREATE TABLE project_data (id INT PRIMARY KEY AUTO_INCREMENT, email VARCHAR(320), age INT, gender CHAR(2), version INT, favorite VARCHAR(120), salty INT);
  */
 
 
@@ -124,7 +124,7 @@ function sanitize(){
  */
 function add_data(){
     global $db;
-    $prep_insert = $db->prepare("INSERT INTO project_data (email, age, gender, version, favorite, tough, salty) values (?,?,?,?,?,?)");
+    $prep_insert = $db->prepare("INSERT INTO project_data (email, age, gender, version, favorite, salty) values (?,?,?,?,?,?)");
     $prep_insert->execute(sanitize());
 }
 
