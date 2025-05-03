@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>PHP Questions: Data</title>
+        <link rel="stylesheet" type="text/css" href="Style/style.css">
     </head>
 <body>
     <div>
@@ -16,6 +17,21 @@
         <label for="fontColorPicker">Choose Font Color:</label>
         <input type="color" id="fontColorPicker" value="#ffffff">
     </div>
+
+    <table>
+        <caption>Survey Data</caption>
+        <tr>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>PHP Version</th>
+            <th>Favorite Part of PHP</th>
+            <th>How Tough Are Ya?</th>
+        </tr>
+
+        <tr>
+
+        </tr>
+    </table>
 <?php
 
 require ('dbconfig.php');
