@@ -14,9 +14,9 @@
 </div>
 <?php
 /**
- * Note: I created my SQL table in PuTTY using the following command:
+ * This is the command to generate the table the webpage needs to properly store the data collected by the form
  * 
- * CREATE TABLE project_data (id INT PRIMARY KEY AUTO_INCREMENT, email VARCHAR(320), age INT, gender CHAR(2), version INT, favorite VARCHAR(120), salty INT);
+ * CREATE TABLE project_data (id INT PRIMARY KEY AUTO_INCREMENT, email VARCHAR(320), age INT, gender VARCHAR(30), version INT, favorite VARCHAR(120), salty INT);
  */
 
 
@@ -82,8 +82,10 @@ function validate(){
     }
 
     # Gender
-    if(strlen($_POST["gender"]) != 2){
-        return "Please select a gender from the gender dropdown.";
+    if ($_POST["gender"] == "ot") {
+        $customGender = true;
+    } else {
+        $customGender = false;
     }
 
     # Version
@@ -108,10 +110,14 @@ function validate(){
 /**
  * Sanitize returns sanitized data in the form of an array
  */
-function sanitize(){
+function sanitize($custom){
     $email = filter_var($_POST["email-name"], FILTER_VALIDATE_EMAIL);
     $age = (int)$_POST["age"];
-    $gender = htmlentities($_POST["gender"]);
+    if ($custom = false) {
+        $gender = htmlentities($_POST["gender"]);
+    } else {
+        $gender = htmlentities($_POST["other-text"]);
+    }
     $version = (int)$_POST["version"];
     $favorite = htmlentities($_POST["favorite"]);
     $tough = htmlentities($_POST["tough"]);
@@ -125,7 +131,7 @@ function sanitize(){
 function add_data(){
     global $db;
     $prep_insert = $db->prepare("INSERT INTO project_data (email, age, gender, version, favorite, salty) values (?,?,?,?,?,?)");
-    $prep_insert->execute(sanitize());
+    $prep_insert->execute(sanitize($custom));
 }
 
 

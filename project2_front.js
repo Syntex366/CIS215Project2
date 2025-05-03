@@ -162,6 +162,15 @@ genderSelect.addEventListener('change', otherOptionPick);
             otherText.style.display = "none";
         }  
     }
+    if (genderSelect.value === "ot") {
+        // Show the other-text input field when "ot" is selected
+        otherText.style.display = "block";
+        otherText.name = "gender"; // Dynamically set the name of the textbox to "gender"
+    } else {
+        // Hide the other-text input field for all other selections
+        otherText.style.display = "none";
+        otherText.name = ""; // Remove the name so it won't be included in the form submission
+    }
 }
 
 
