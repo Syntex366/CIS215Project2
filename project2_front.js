@@ -3,7 +3,7 @@
 const textAmt = document.querySelector("#favorite"); /* grabs the text inside the favorite textbox */
 const chars = document.querySelector("#char-count"); /* grabs the span element for displaying the char count */
  
-if (textAmt && chars) {
+if (textAmt && chars) { /* checks if the querySelector variables exist. Avoids issues with using the JS file on multiple pages. Used on most of the other event listeners */
 textAmt.addEventListener("input", function() { /* checks if the user has less than 50 characters and starts displaying the count as they type. Turns red when less than 10 characters remain. */
     chars.innerHTML = 120 - textAmt.value.length; /* the chars-remaining calculation */
         if (chars.innerHTML >= 50) { /* activates the display of the count when below 50 */
@@ -166,31 +166,29 @@ genderSelect.addEventListener('change', otherOptionPick);
 
 
 
-/* Delete Data AJAX Function */
+/* Delete Data AJAX Function - Takes an email from the user on the data page and if that email can be found in the database, the data associated with that email is deleted from the table */
 
-const deleteButton = document.querySelector("#delete-data");
-const email = document.querySelector("#email-delete");
+const deleteButton = document.querySelector("#delete-data"); /* grabs the delete button */
+const email = document.querySelector("#email-delete"); /* grabs the email from the input box */
 
 if (deleteButton) {
-deleteButton.addEventListener('click', deleteData);
+    deleteButton.addEventListener('click', deleteData);
 
-async function deleteData(event) {
-    let emailToDelete = email.value;
+    async function deleteData(event) { /* sends a fetch request to the deletedata.php file, which further fetches the table data and uses array_diff to compare for matching emails */
+        let emailToDelete = email.value;
     
-        if (!(emailToDelete === "")) {
+            if (!(emailToDelete === "")) { /* prevents the fetch when nothing is typed in */
 
-            const response = await fetch(`deletedata.php?email=${emailToDelete}`);
-            console.log(response);
+                const response = await fetch(`deletedata.php?email=${emailToDelete}`); /* fetch to deletedata.php */
 
-            if (!response.ok) {
-                console.error("network response was not ok");
-                return;
-            }
+                if (!response.ok) { /* response validation */
+                    console.error("network response was not ok");
+                    return;
+                }
 
-            let result = await response.json();
-            console.log(result);
+                let result = await response.json(); /* response return */
 
-            alert(result.msg);
+            alert(result.msg); /* display message alerting the user to the state of their data deletion request */
         }
     }
 }
