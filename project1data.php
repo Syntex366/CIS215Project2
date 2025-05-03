@@ -223,7 +223,7 @@ function favorite_thing(){
  */
 function tough_data(){
     global $db;
-    $prep_selecttou = $db->prepare("SELECT tough FROM HomeworkSix");
+    $prep_selecttou = $db->prepare("SELECT salty FROM project_data");
     $prep_selecttou->execute();
     $tough_data = $prep_selecttou->fetchAll();
     $tough_array["1, I'm Spongebob!"] = 0;
@@ -236,8 +236,9 @@ function tough_data(){
     $tough_array["8, I'm very tough!"] = 0;
     $tough_array["9, Toughest person around!"] = 0;
     $tough_array["10, I ate a bowl full of nails for breakfast. Without any milk!"] = 0;
+    #print ($tough_data[0]["Salty"]);
     for($i=0;$i<count($tough_data);$i++){
-        switch($tough_data[$i]["tough"]){
+        switch($tough_data[$i]["Salty"]){
             case "2":
                 $tough_array["2, I flinch at the slightest movement"]++;
                 break;
