@@ -256,7 +256,7 @@ pwTextBox.addEventListener('keyup', characterCounter);
 
 // Quinton code for front end validation
 document.querySelectorAll("error").forEach(errormessage) {
-    errorText = "";
+    errorText = ""
 }
 let validinput= true;
 
