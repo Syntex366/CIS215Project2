@@ -254,3 +254,34 @@ pwTextBox.addEventListener('keyup', characterCounter);
     }
 }
 
+// Quinton code for front end validation
+document.querySelectorAll("error").forEach(errormessage) {
+    errorText = ""
+}
+let validinput= true;
+
+const emaill = documentgetElementById("email-id").value;
+if (emaill == ""){
+    validinput= false;
+    documentgetElementById("erroremail").textContent = "Enter valid email";
+};
+
+const passssss = documentgetElementById("pw-id").value;
+if (passssss == ""){
+    validinput= false;
+    documentgetElementById("passerror").textContent = "Enter valid password";
+};
+
+// Tooltips JS- Quinton
+function showtooltip(tooltip){
+    tooltip.style.display = "block";
+}
+document.querySelectorAll('aria-describedby').forEach(function(element){
+    const tooltip= document.querySelector(tooltip);
+});
+    
+
+element.addEventListener('mouseenter', function() {
+    showtooltip(tooltip);
+});
+

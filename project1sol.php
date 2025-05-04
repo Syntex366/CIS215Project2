@@ -21,10 +21,18 @@
 <fieldset>
 
 <label>Enter your email: </label>
-<input type="email" name="email-name" id="email-id" required>
+<input aria-describedby="emailrules" type="email" name="email-name" id="email-id" required>
+<span class="error" id="erroremail">
+    <p>Enter valid email</p>
+</span>
+<div role="tooltip" id="emailrules">
 
 <label>Enter your password: </label>
-<input type="password" name="pw-name" id="pw-id" required><span id="feedback"></span>
+<input aria-describedby="passwordrules" type="password" name="pw-name" id="pw-id" required><span id="feedback"></span>
+<span class="error" id="passerror">
+    <p>Enter valid password</p>
+</span>
+<div role="tooltip" id="passwordrules">
 
 <button type="button" name="login" id="login-id">Login</button>
 
@@ -37,6 +45,7 @@
 <div>
 <label> <input type="radio" name="age" id="age-0" value="0" required>
 0-12 </label>
+<span class="error" id="ageerror"></span>
 </div>
 <?php
 
