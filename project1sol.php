@@ -66,7 +66,7 @@ for($i=13;$i<65;$i=$i + 5){
 </div>
 
 <div id="other-text"  style="display: none;"> <!-- Other textbox, hidden by default -->
-    <textarea maxLength="30"></textarea>
+    <textarea name="gender-other" maxLength="30"></textarea>
     </div>
 
 <div>

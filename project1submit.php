@@ -82,10 +82,8 @@ function validate(){
     }
 
     # Gender
-    if ($_POST["gender"] == "ot") {
-        $customGender = true;
-    } else {
-        $customGender = false;
+    if ($_POST["gender"] == "") {
+        return "Please select a gender option or enter your own";
     }
 
     # Version
@@ -110,13 +108,13 @@ function validate(){
 /**
  * Sanitize returns sanitized data in the form of an array
  */
-function sanitize($custom){
+function sanitize(){
     $email = filter_var($_POST["email-name"], FILTER_VALIDATE_EMAIL);
     $age = (int)$_POST["age"];
-    if ($custom = false) {
-        $gender = htmlentities($_POST["gender"]);
+    if (!($_POST["gender"] == "ot")) {
+        $gender = $_POST["gender"];
     } else {
-        $gender = htmlentities($_POST["other-text"]);
+        $gender = $_POST["gender-other"];
     }
     $version = (int)$_POST["version"];
     $favorite = htmlentities($_POST["favorite"]);
@@ -131,7 +129,7 @@ function sanitize($custom){
 function add_data(){
     global $db;
     $prep_insert = $db->prepare("INSERT INTO project_data (email, age, gender, version, favorite, salty) values (?,?,?,?,?,?)");
-    $prep_insert->execute(sanitize($custom));
+    $prep_insert->execute(sanitize());
 }
 
 
