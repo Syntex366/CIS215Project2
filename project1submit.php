@@ -82,7 +82,7 @@ function validate(){
     }
 
     # Gender
-    if ($_POST["gender"] == "") {
+    if ($_POST["gender"] == "") { /* new validation for gender - prevents empty entries */
         return "Please select a gender option or enter your own";
     }
 
@@ -111,7 +111,7 @@ function validate(){
 function sanitize(){
     $email = filter_var($_POST["email-name"], FILTER_VALIDATE_EMAIL);
     $age = (int)$_POST["age"];
-    if (!($_POST["gender"] == "ot")) {
+    if (!($_POST["gender"] == "ot")) { /* makes sure the right name value is being grabbed in post to correctly submit a custom or selected gender option */
         $gender = $_POST["gender"];
     } else {
         $gender = $_POST["gender-other"];

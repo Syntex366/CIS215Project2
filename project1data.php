@@ -51,12 +51,12 @@
                         }
                     ?>
     </table>
+                    <!-- HTML for delete data option -->
+<div>
+    <label for="delete-data">If you would like to delete your data from the table, please enter your email in the box and click the Delete My Data button.</label>
 
-    <div>
-<label for="delete-data">If you would like to delete your data from the table, please enter your email in the box and click the Delete My Data button.</label>
-
-<input type="email" name="email-dlt" id="email-delete" required>
-<button type="button" name="delete-btn" id="delete-data">Delete My Data</Button>
+    <input type="email" name="email-dlt" id="email-delete" required>
+    <button type="button" name="delete-btn" id="delete-data">Delete My Data</Button>
 </div>
 
 <?php

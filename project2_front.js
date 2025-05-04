@@ -147,29 +147,22 @@ if (highlighter) {
 
 /* Other Textbox Function - Displays a textbox to enter a custom gender option when the "choose not to say/other" selection is made */
 
-const genderSelect = document.querySelector("#gender");
-const otherText = document.querySelector("#other-text");
+const genderSelect = document.querySelector("#gender"); /* grabs the select pane */
+const otherText = document.querySelector("#other-text"); /* grabs the other textbox */
 
 if (genderSelect) {
-genderSelect.addEventListener('change', otherOptionPick);
+genderSelect.addEventListener('change', otherOptionPick); /* event listener */
 
-    async function otherOptionPick(event) {
+    async function otherOptionPick(event) { /* hides and reveals the textbox appropriately depending on the other option's selection. Also changes the name value of the div to override the select pane when needed */
         let select = event.target.value;
 
         if (select === "ot") {
             otherText.style.display = "block";
+            otherText.name = "gender";
         } else {
             otherText.style.display = "none";
+            otherText.name = ""; 
         }  
-    }
-    if (genderSelect.value === "ot") {
-        // Show the other-text input field when "ot" is selected
-        otherText.style.display = "block";
-        otherText.name = "gender"; // Dynamically set the name of the textbox to "gender"
-    } else {
-        // Hide the other-text input field for all other selections
-        otherText.style.display = "none";
-        otherText.name = ""; // Remove the name so it won't be included in the form submission
     }
 }
 
@@ -284,4 +277,3 @@ document.querySelectorAll('aria-describedby').forEach(function(element){
 element.addEventListener('mouseenter', function() {
     showtooltip(tooltip);
 });
-
