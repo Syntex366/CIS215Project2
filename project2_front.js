@@ -209,20 +209,16 @@ function validatepswd(){
 }
 
 
-// Background color picker
-document.addEventListener("DOMContentLoaded", () => {
-    const picker = document.getElementById("bgColorPicker");
-    picker.addEventListener("input", (e) => {
-        document.body.style.backgroundColor = e.target.value;
-    });
+// 1a. Background color picker
+const bgPicker = document.getElementById("bgColorPicker");
+bgPicker.addEventListener("input", (e) => {
+    document.body.style.backgroundColor = e.target.value;
 });
 
-// Font color picker
-document.addEventListener("DOMContentLoaded", () => {
-    const picker = document.getElementById("fontColorPicker");
-    picker.addEventListener("input", (e) => {
-        document.body.style.color = e.target.value;
-    });
+// 1b. Font color picker
+const fontPicker = document.getElementById("fontColorPicker");
+fontPicker.addEventListener("input", (e) => {
+    document.body.style.color = e.target.value;
 });
 
 const pwTextBox = document.querySelector("#pw-id");
