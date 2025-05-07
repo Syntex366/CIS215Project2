@@ -10,6 +10,18 @@
         <label for="searchData"><strong>Search:</strong></label>
         <input type="search" id="searchData" name="sd" placeholder="Search the data page...">
     </div>
+
+    <!-- Template for search results -->
+    <template data-user-template>
+        <div class="card">
+            <div class="header" data-header></div>
+            <div class="body" data-body></div>
+        </div>
+    </template>
+
+    <!-- Container for cards -->
+    <div class="user-cards" data-user-cards-container></div>
+    
     <div id="bgColorGoWee">
         <label for="bgColorPicker">Choose Background Color:</label>
         <input type="color" id="bgColorPicker" value="#ffffff">
