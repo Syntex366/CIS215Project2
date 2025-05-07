@@ -1,5 +1,4 @@
 <?php
-    header("Content-Type: application/json");
     include "dbconfig.php";
 
     $sql = ("SELECT * FROM project_data"); /* prepares all data from the database table to be displayed in an HTML table */
@@ -12,12 +11,4 @@
             $data[] = $row;
         }
     } 
-
-    else {
-        echo json_encode(["error" => "No data found"]);
-        exit;
-    }
-
-    echo json_encode($data);
-    $conn->close();
 ?>
